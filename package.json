@@ -1,0 +1,30 @@
+{
+  "name": "betweenus",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Stateless post-quantum ephemeral messenger",
+  "workspaces": [
+    "packages/*",
+    "functions",
+    "apps/mobile"
+  ],
+  "scripts": {
+    "build:crypto": "npm run build --workspace=packages/crypto",
+    "build:functions": "npm run build --workspace=functions",
+    "deploy:functions": "npm run deploy --workspace=functions",
+    "deploy:indexes": "firebase deploy --only firestore:indexes",
+    "deploy:rules": "firebase deploy --only firestore:rules",
+    "deploy:all": "npm run deploy:indexes && npm run deploy:rules && npm run deploy:functions",
+    "start:mobile": "npm run start --workspace=apps/mobile",
+    "test": "npm test --workspace=packages/crypto",
+    "test:functions": "npm test --workspace=functions",
+    "test:ci": "npm run test:ci --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

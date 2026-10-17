@@ -1,0 +1,36 @@
+# Secrets — NEVER commit
+functions/serviceAccount.json
+apps/mobile/google-services.json
+apps/mobile/GoogleService-Info.plist
+apps/mobile/play-store-service-account.json
+.env
+.env.local
+.env.*.local
+
+# Build output
+**/dist/
+**/build/
+**/.expo/
+**/node_modules/
+
+# Firebase
+.firebase/
+firebase-debug.log
+firebase-debug.*.log
+firestore-debug.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# React Native
+apps/mobile/.gradle/
+apps/mobile/android/.gradle/
+apps/mobile/ios/Pods/
+apps/mobile/ios/build/
+apps/mobile/android/build/

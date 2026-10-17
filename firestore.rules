@@ -1,0 +1,27 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── Key Registry ───────────────────────────────────────────────────────
+    // Public keys only. No client-side reads/writes allowed — all access
+    // goes through Cloud Functions which use Admin SDK (bypasses rules).
+    // These rules lock the collection against direct client access.
+    match /keys/{userId} {
+      allow read: if false;   // Enforced via Cloud Function only
+      allow write: if false;  // Enforced via Cloud Function only
+    }
+
+    // ── Rate Limit Counters ────────────────────────────────────────────────
+    // Written by Cloud Functions only (Admin SDK bypasses rules).
+    // No client should ever read or write these directly.
+    match /rateLimits/{ip} {
+      allow read: if false;
+      allow write: if false;
+    }
+
+    // Default deny — no other collections should exist in this system
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

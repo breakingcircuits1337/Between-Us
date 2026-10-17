@@ -1,0 +1,60 @@
+{
+  "expo": {
+    "name": "BETWEENUS",
+    "slug": "betweenus",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "betweenus",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0a0a0f"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0a0a0f"
+      },
+      "package": "com.betweenus.app",
+      "googleServicesFile": "./google-services.json",
+      "permissions": [
+        "CAMERA",
+        "RECEIVE_BOOT_COMPLETED",
+        "VIBRATE"
+      ]
+    },
+    "ios": {
+      "bundleIdentifier": "com.betweenus.app",
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Camera is used to scan recipient QR codes for key exchange"
+      }
+    },
+    "plugins": [
+      "@react-native-firebase/app",
+      "@react-native-firebase/app-check",
+      [
+        "@react-native-firebase/messaging",
+        {
+          "ios": {
+            "permissions": ["alert", "badge", "sound"]
+          }
+        }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow BETWEENUS to scan QR codes for cryptographic key exchange."
+        }
+      ],
+      "@notifee/react-native"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "YOUR_EAS_PROJECT_ID"
+      }
+    }
+  }
+}
